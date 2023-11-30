@@ -1,0 +1,824 @@
+[{
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "internalType": "uint256[]",
+            "name": "amounts",
+            "type": "uint256[]"
+        }],
+        "name": "Debug",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "internalType": "address[]",
+            "name": "_operators",
+            "type": "address[]"
+        }],
+        "name": "OperatorsAdded",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "internalType": "address[]",
+            "name": "_operators",
+            "type": "address[]"
+        }],
+        "name": "OperatorsRemoved",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "orderId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "caller",
+                "type": "address"
+            }
+        ],
+        "name": "OrderCancelled",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": true,
+                "internalType": "address",
+                "name": "creator",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "acceptedToken",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "nftToken",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint64",
+                "name": "quantities",
+                "type": "uint64"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint128",
+                "name": "targetPrice",
+                "type": "uint128"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint128",
+                "name": "baseFeePercent",
+                "type": "uint128"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint128",
+                "name": "priorityFee",
+                "type": "uint128"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint64",
+                "name": "createdTime",
+                "type": "uint64"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint64",
+                "name": "expiredTime",
+                "type": "uint64"
+            },
+            {
+                "indexed": false,
+                "internalType": "bool",
+                "name": "isSelling",
+                "type": "bool"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "orderId",
+                "type": "uint256"
+            }
+        ],
+        "name": "OrderCreated",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "orderId",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "seller",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "buyer",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint32",
+                "name": "quantities",
+                "type": "uint32"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint32",
+                "name": "remainingQuantities",
+                "type": "uint32"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "totalPrice",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "totalFees",
+                "type": "uint256"
+            }
+        ],
+        "name": "OrderTaken",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": true,
+                "internalType": "address",
+                "name": "previousOwner",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
+            }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": true,
+                "internalType": "address",
+                "name": "feeCalculator",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint64",
+                "name": "baseFeePercent",
+                "type": "uint64"
+            }
+        ],
+        "name": "SetFeeConfig",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "internalType": "address[]",
+            "name": "_tokens",
+            "type": "address[]"
+        }],
+        "name": "TokensAdded",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "internalType": "address[]",
+            "name": "_tokens",
+            "type": "address[]"
+        }],
+        "name": "TokensRemoved",
+        "type": "event"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "i",
+            "type": "uint256"
+        }],
+        "name": "acceptedTokenAt",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "address[]",
+                "name": "_tokens",
+                "type": "address[]"
+            },
+            {
+                "internalType": "uint128[]",
+                "name": "_minPriorityFeeSell",
+                "type": "uint128[]"
+            },
+            {
+                "internalType": "uint128[]",
+                "name": "_minPriorityFeeBuy",
+                "type": "uint128[]"
+            }
+        ],
+        "name": "addAcceptedTokens",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "address[]",
+            "name": "_operators",
+            "type": "address[]"
+        }],
+        "name": "addOperators",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "orderId",
+            "type": "uint256"
+        }],
+        "name": "cancelOrder",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "address",
+                "name": "acceptedToken",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "nftToken",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint32",
+                "name": "quantities",
+                "type": "uint32"
+            },
+            {
+                "internalType": "uint128",
+                "name": "targetPrice",
+                "type": "uint128"
+            },
+            {
+                "internalType": "uint128",
+                "name": "priorityFee",
+                "type": "uint128"
+            },
+            {
+                "internalType": "uint64",
+                "name": "duration",
+                "type": "uint64"
+            },
+            {
+                "internalType": "bool",
+                "name": "isSelling",
+                "type": "bool"
+            }
+        ],
+        "name": "createOrder",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "orderId",
+            "type": "uint256"
+        }],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getAllAcceptedTokens",
+        "outputs": [{
+            "internalType": "address[]",
+            "name": "_tokens",
+            "type": "address[]"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getAllOperators",
+        "outputs": [{
+            "internalType": "address[]",
+            "name": "_operators",
+            "type": "address[]"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "address",
+                "name": "user",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "acceptedToken",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "nftToken",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint128",
+                "name": "targetPrice",
+                "type": "uint128"
+            },
+            {
+                "internalType": "bool",
+                "name": "isSelling",
+                "type": "bool"
+            }
+        ],
+        "name": "getBaseFeePercent",
+        "outputs": [{
+            "internalType": "uint64",
+            "name": "baseFeePercent",
+            "type": "uint64"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "address",
+            "name": "_token",
+            "type": "address"
+        }],
+        "name": "getMinPriorityFeeData",
+        "outputs": [{
+            "components": [{
+                    "internalType": "uint128",
+                    "name": "sellOrderMinFee",
+                    "type": "uint128"
+                },
+                {
+                    "internalType": "uint128",
+                    "name": "buyOrderMinFee",
+                    "type": "uint128"
+                }
+            ],
+            "internalType": "struct AcceptedTokenList.MinPriorityFee",
+            "name": "",
+            "type": "tuple"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "orderId",
+            "type": "uint256"
+        }],
+        "name": "getOrder",
+        "outputs": [{
+            "components": [{
+                    "internalType": "address",
+                    "name": "creator",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "acceptedToken",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "nftToken",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint128",
+                    "name": "targetPrice",
+                    "type": "uint128"
+                },
+                {
+                    "internalType": "uint128",
+                    "name": "priorityFee",
+                    "type": "uint128"
+                },
+                {
+                    "internalType": "uint32",
+                    "name": "quantities",
+                    "type": "uint32"
+                },
+                {
+                    "internalType": "uint32",
+                    "name": "remainingQuantities",
+                    "type": "uint32"
+                },
+                {
+                    "internalType": "uint64",
+                    "name": "baseFeePercent",
+                    "type": "uint64"
+                },
+                {
+                    "internalType": "uint64",
+                    "name": "createdTime",
+                    "type": "uint64"
+                },
+                {
+                    "internalType": "uint64",
+                    "name": "expiredTime",
+                    "type": "uint64"
+                },
+                {
+                    "internalType": "bool",
+                    "name": "isSelling",
+                    "type": "bool"
+                }
+            ],
+            "internalType": "struct IMetamateMarketBase.Order",
+            "name": "",
+            "type": "tuple"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "startIndex",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "endIndex",
+                "type": "uint256"
+            }
+        ],
+        "name": "getOrderInRange",
+        "outputs": [{
+            "components": [{
+                    "internalType": "address",
+                    "name": "creator",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "acceptedToken",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "nftToken",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint128",
+                    "name": "targetPrice",
+                    "type": "uint128"
+                },
+                {
+                    "internalType": "uint128",
+                    "name": "priorityFee",
+                    "type": "uint128"
+                },
+                {
+                    "internalType": "uint32",
+                    "name": "quantities",
+                    "type": "uint32"
+                },
+                {
+                    "internalType": "uint32",
+                    "name": "remainingQuantities",
+                    "type": "uint32"
+                },
+                {
+                    "internalType": "uint64",
+                    "name": "baseFeePercent",
+                    "type": "uint64"
+                },
+                {
+                    "internalType": "uint64",
+                    "name": "createdTime",
+                    "type": "uint64"
+                },
+                {
+                    "internalType": "uint64",
+                    "name": "expiredTime",
+                    "type": "uint64"
+                },
+                {
+                    "internalType": "bool",
+                    "name": "isSelling",
+                    "type": "bool"
+                }
+            ],
+            "internalType": "struct IMetamateMarketBase.Order[]",
+            "name": "_orders",
+            "type": "tuple[]"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "address",
+                "name": "_feeHolder",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "_feeCalculator",
+                "type": "address"
+            },
+            {
+                "internalType": "uint64",
+                "name": "_baseFeePercent",
+                "type": "uint64"
+            },
+            {
+                "internalType": "address[]",
+                "name": "_acceptedTokens",
+                "type": "address[]"
+            },
+            {
+                "internalType": "uint128[]",
+                "name": "_minPriorityFeeSell",
+                "type": "uint128[]"
+            },
+            {
+                "internalType": "uint128[]",
+                "name": "_minPriorityFeeBuy",
+                "type": "uint128[]"
+            }
+        ],
+        "name": "initialize",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "address",
+            "name": "_operator",
+            "type": "address"
+        }],
+        "name": "isOperator",
+        "outputs": [{
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "address",
+            "name": "_token",
+            "type": "address"
+        }],
+        "name": "isTokenAccepted",
+        "outputs": [{
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "numberAcceptedTokens",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "numberOperators",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "numberOrders",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "i",
+            "type": "uint256"
+        }],
+        "name": "operatorAt",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "address",
+                "name": "token",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address payable",
+                "name": "recipient",
+                "type": "address"
+            }
+        ],
+        "name": "ownerWithdraw",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "address[]",
+            "name": "_tokens",
+            "type": "address[]"
+        }],
+        "name": "removeAcceptedTokens",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "address[]",
+            "name": "_operators",
+            "type": "address[]"
+        }],
+        "name": "removeOperators",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "renounceOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "address",
+                "name": "_feeHolder",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "_feeCalculator",
+                "type": "address"
+            },
+            {
+                "internalType": "uint64",
+                "name": "_baseFeePercent",
+                "type": "uint64"
+            }
+        ],
+        "name": "setFeeConfig",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "orderId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint32",
+                "name": "quantities",
+                "type": "uint32"
+            }
+        ],
+        "name": "takeOrder",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "address",
+            "name": "newOwner",
+            "type": "address"
+        }],
+        "name": "transferOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "stateMutability": "payable",
+        "type": "receive"
+    }
+]
